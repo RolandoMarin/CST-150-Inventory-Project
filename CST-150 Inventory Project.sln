@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CST-150 Inventory Project", "CST-150 Inventory Project\CST-150 Inventory Project.csproj", "{C7CFBDFE-2B28-4B8C-9AE8-77DAD18B487D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7CFBDFE-2B28-4B8C-9AE8-77DAD18B487D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7CFBDFE-2B28-4B8C-9AE8-77DAD18B487D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7CFBDFE-2B28-4B8C-9AE8-77DAD18B487D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7CFBDFE-2B28-4B8C-9AE8-77DAD18B487D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC3062AC-4C71-4DD7-AEB1-0C5126FF39A2}
+	EndGlobalSection
+EndGlobal
