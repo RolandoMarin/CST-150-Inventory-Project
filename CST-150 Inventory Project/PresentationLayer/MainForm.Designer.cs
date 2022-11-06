@@ -74,6 +74,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -168,10 +169,10 @@
             // dtaInventory
             // 
             this.dtaInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtaInventory.Location = new System.Drawing.Point(504, 157);
+            this.dtaInventory.Location = new System.Drawing.Point(471, 168);
             this.dtaInventory.Name = "dtaInventory";
             this.dtaInventory.RowHeadersWidth = 82;
-            this.dtaInventory.Size = new System.Drawing.Size(808, 572);
+            this.dtaInventory.Size = new System.Drawing.Size(859, 572);
             this.dtaInventory.TabIndex = 16;
             // 
             // MainForm
@@ -198,6 +199,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtaInventory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
