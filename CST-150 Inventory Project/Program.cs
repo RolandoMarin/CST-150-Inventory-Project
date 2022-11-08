@@ -1,3 +1,9 @@
+/*rolando marin-galvan
+ * CST-150
+ * 11/06/22
+ * Milestone 2
+ * This was my own work
+ */
 namespace CST_150_Inventory_Project
 {
     internal static class Program

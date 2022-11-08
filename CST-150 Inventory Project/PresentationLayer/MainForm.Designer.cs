@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -44,37 +44,41 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dtaInventory = new System.Windows.Forms.DataGridView();
+            this.lblResults = new System.Windows.Forms.Label();
+            this.btnInc = new System.Windows.Forms.Button();
+            this.btnDec = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtaInventory)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(14, 635);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 46);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdd.Location = new System.Drawing.Point(14, 635);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(150, 46);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button2
+            // btnEdit
             // 
-            this.button2.Location = new System.Drawing.Point(170, 635);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 46);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Edit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEdit.Location = new System.Drawing.Point(170, 635);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(150, 46);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // button3
+            // btnDelete
             // 
-            this.button3.Location = new System.Drawing.Point(326, 635);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 46);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnDelete.Location = new System.Drawing.Point(326, 635);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(150, 46);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label1
             // 
@@ -174,12 +178,45 @@
             this.dtaInventory.RowHeadersWidth = 82;
             this.dtaInventory.Size = new System.Drawing.Size(859, 572);
             this.dtaInventory.TabIndex = 16;
+            this.dtaInventory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtaInventory_CellClick);
+            // 
+            // lblResults
+            // 
+            this.lblResults.AutoSize = true;
+            this.lblResults.Location = new System.Drawing.Point(36, 770);
+            this.lblResults.Name = "lblResults";
+            this.lblResults.Size = new System.Drawing.Size(78, 32);
+            this.lblResults.TabIndex = 17;
+            this.lblResults.Text = "label6";
+            // 
+            // btnInc
+            // 
+            this.btnInc.Location = new System.Drawing.Point(291, 756);
+            this.btnInc.Name = "btnInc";
+            this.btnInc.Size = new System.Drawing.Size(150, 46);
+            this.btnInc.TabIndex = 18;
+            this.btnInc.Text = "Add";
+            this.btnInc.UseVisualStyleBackColor = true;
+            this.btnInc.Click += new System.EventHandler(this.btnInc_Click);
+            // 
+            // btnDec
+            // 
+            this.btnDec.Location = new System.Drawing.Point(488, 756);
+            this.btnDec.Name = "btnDec";
+            this.btnDec.Size = new System.Drawing.Size(150, 46);
+            this.btnDec.TabIndex = 19;
+            this.btnDec.Text = "Remove";
+            this.btnDec.UseVisualStyleBackColor = true;
+            this.btnDec.Click += new System.EventHandler(this.btnDec_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1342, 833);
+            this.Controls.Add(this.btnDec);
+            this.Controls.Add(this.btnInc);
+            this.Controls.Add(this.lblResults);
             this.Controls.Add(this.dtaInventory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -192,9 +229,9 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnAdd);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -207,9 +244,9 @@
         }
 
         #endregion
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button btnAdd;
+        private Button btnEdit;
+        private Button btnDelete;
         private Label label1;
         private ComboBox comboBox1;
         private Button button4;
@@ -222,5 +259,8 @@
         private Label label4;
         private Label label5;
         private DataGridView dtaInventory;
+        private Label lblResults;
+        private Button btnInc;
+        private Button btnDec;
     }
 }
