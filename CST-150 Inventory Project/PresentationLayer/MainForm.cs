@@ -41,7 +41,6 @@ namespace CST_150_Inventory_Project.Resources
             table.Rows.Add("Apple", "Produce", 48, .60M);
             table.Rows.Add("Lays", "Chips", 7, 3.49M);
             table.Rows.Add("Chobani", "Dairy", 10, 5.69M);
-
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -69,14 +68,19 @@ namespace CST_150_Inventory_Project.Resources
         private void dtaInventory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //when a cell has been clicked it will assign the values in texboxes
-            selectedRow = e.RowIndex;
-            DataGridViewRow row = dtaInventory.Rows[selectedRow];
-            txtName.Text = row.Cells[0].Value.ToString();
-            txtCat.Text = row.Cells[1].Value.ToString();
-            txtQuant.Text = row.Cells[2].Value.ToString();
-            txtCost.Text = row.Cells[3].Value.ToString();
 
-            lblResults.Text = row.Cells[2].Value.ToString();
+            //throws a out of bounds error when you select column
+            selectedRow = e.RowIndex;
+            if (selectedRow >= 0)
+            {
+                DataGridViewRow row = dtaInventory.Rows[selectedRow];
+                txtName.Text = row.Cells[0].Value.ToString();
+                txtCat.Text = row.Cells[1].Value.ToString();
+                txtQuant.Text = row.Cells[2].Value.ToString();
+                txtCost.Text = row.Cells[3].Value.ToString();
+
+                lblResults.Text = row.Cells[2].Value.ToString();
+            }
 
         }
 

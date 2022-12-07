@@ -13,9 +13,10 @@ using System.Collections.Generic;
 using System.Data;
 using CST_150_Inventory_Project.Resources;
 
+
 namespace CST_150_Inventory_Project.BusinessLayer
 {
-    internal class Inventory
+    public class Inventory
     {
         //properties
         public string InventoryItem { get; set; }
