@@ -34,7 +34,6 @@ namespace CST_150_Inventory_Project.Resources
         {
             InitializeComponent();
         }
-
         /// <summary>
         /// When Main Form loads We Get invenotry Items from Data Access Layer
         /// </summary>
@@ -51,7 +50,6 @@ namespace CST_150_Inventory_Project.Resources
             GVInvHeader();
 
         }
-   
         /// <summary>
         /// Method that changes the column within the GridView
         /// </summary>
@@ -85,7 +83,11 @@ namespace CST_150_Inventory_Project.Resources
                 }
             }
         }
-
+        /// <summary>
+        /// btn event handler that adds an item with textbox inputs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //parse the textboxes
@@ -110,7 +112,11 @@ namespace CST_150_Inventory_Project.Resources
                 MessageBox.Show("Please try again :)");
             }
         }
-
+        /// <summary>
+        /// gridview cellclick event handler that manages the selected cell 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtaInventory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //when a cell has been clicked it will assign the values in texboxes
@@ -131,6 +137,11 @@ namespace CST_150_Inventory_Project.Resources
             }
 
         }
+        /// <summary>
+        /// button edit event handler that edits inventory with textbox inputs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
             //when btnedit has been clicked it will update wiht a new datarow
@@ -140,7 +151,11 @@ namespace CST_150_Inventory_Project.Resources
             newDatrow.Cells[2].Value = txtQuant.Text;
             newDatrow.Cells[3].Value = txtCost.Text;
         }
-
+        /// <summary>
+        /// btn delete event handler that deletes the slected column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (selectedRow > 0)
@@ -182,13 +197,20 @@ namespace CST_150_Inventory_Project.Resources
             }
           
         }
-
+        /// <summary>
+        /// btn search event handler that opens a new form that displyys inventory and searches inventory with 2 criteries
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchForm formSecond = new SearchForm(myInventory);
             formSecond.ShowDialog();
          
         }
+        /// <summary>
+        /// Method that resets the values of textboxes
+        /// </summary>
         private void resetValues()
         {
             txtCat.Text = "";
@@ -197,7 +219,11 @@ namespace CST_150_Inventory_Project.Resources
             txtQuant.Text = "";
             selectedRow = 0;
         }
-
+        /// <summary>
+        /// btn reset event handler that reset textbox values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReset_Click(object sender, EventArgs e)
         {
             resetValues();
