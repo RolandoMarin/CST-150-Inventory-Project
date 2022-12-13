@@ -33,8 +33,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtCat = new System.Windows.Forms.TextBox();
             this.txtQuant = new System.Windows.Forms.TextBox();
@@ -44,67 +43,62 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dtaInventory = new System.Windows.Forms.DataGridView();
-            this.lblResults = new System.Windows.Forms.Label();
-            this.btnInc = new System.Windows.Forms.Button();
-            this.btnDec = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtaInventory)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(14, 635);
+            this.btnAdd.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnAdd.Location = new System.Drawing.Point(1, 635);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(150, 46);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(170, 635);
+            this.btnEdit.BackColor = System.Drawing.Color.Yellow;
+            this.btnEdit.Location = new System.Drawing.Point(322, 635);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(150, 46);
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(326, 635);
+            this.btnDelete.BackColor = System.Drawing.Color.Orange;
+            this.btnDelete.Location = new System.Drawing.Point(166, 635);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(150, 46);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(845, 20);
+            this.label1.Location = new System.Drawing.Point(825, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(157, 32);
             this.label1.TabIndex = 4;
             this.label1.Text = "Inventory List";
             // 
-            // comboBox1
+            // btnSearch
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(662, 86);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(251, 40);
-            this.comboBox1.TabIndex = 5;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(991, 82);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(159, 46);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Search";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSearch.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnSearch.Location = new System.Drawing.Point(970, 750);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(159, 46);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtName
             // 
@@ -137,6 +131,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label2.Location = new System.Drawing.Point(26, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 32);
@@ -172,51 +167,34 @@
             // 
             // dtaInventory
             // 
+            this.dtaInventory.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dtaInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtaInventory.Location = new System.Drawing.Point(471, 168);
+            this.dtaInventory.Location = new System.Drawing.Point(478, 109);
             this.dtaInventory.Name = "dtaInventory";
+            this.dtaInventory.ReadOnly = true;
             this.dtaInventory.RowHeadersWidth = 82;
             this.dtaInventory.Size = new System.Drawing.Size(859, 572);
             this.dtaInventory.TabIndex = 16;
             this.dtaInventory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtaInventory_CellClick);
             // 
-            // lblResults
+            // btnReset
             // 
-            this.lblResults.AutoSize = true;
-            this.lblResults.Location = new System.Drawing.Point(36, 770);
-            this.lblResults.Name = "lblResults";
-            this.lblResults.Size = new System.Drawing.Size(78, 32);
-            this.lblResults.TabIndex = 17;
-            this.lblResults.Text = "label6";
-            // 
-            // btnInc
-            // 
-            this.btnInc.Location = new System.Drawing.Point(291, 756);
-            this.btnInc.Name = "btnInc";
-            this.btnInc.Size = new System.Drawing.Size(150, 46);
-            this.btnInc.TabIndex = 18;
-            this.btnInc.Text = "Add";
-            this.btnInc.UseVisualStyleBackColor = true;
-            this.btnInc.Click += new System.EventHandler(this.btnInc_Click);
-            // 
-            // btnDec
-            // 
-            this.btnDec.Location = new System.Drawing.Point(488, 756);
-            this.btnDec.Name = "btnDec";
-            this.btnDec.Size = new System.Drawing.Size(150, 46);
-            this.btnDec.TabIndex = 19;
-            this.btnDec.Text = "Remove";
-            this.btnDec.UseVisualStyleBackColor = true;
-            this.btnDec.Click += new System.EventHandler(this.btnDec_Click);
+            this.btnReset.BackColor = System.Drawing.Color.Tomato;
+            this.btnReset.Location = new System.Drawing.Point(1167, 750);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(150, 46);
+            this.btnReset.TabIndex = 17;
+            this.btnReset.Text = "Reset ";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1342, 833);
-            this.Controls.Add(this.btnDec);
-            this.Controls.Add(this.btnInc);
-            this.Controls.Add(this.lblResults);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.dtaInventory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -226,16 +204,16 @@
             this.Controls.Add(this.txtQuant);
             this.Controls.Add(this.txtCat);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "Rolo\'s Grocery Inventory";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtaInventory)).EndInit();
             this.ResumeLayout(false);
@@ -248,8 +226,7 @@
         private Button btnEdit;
         private Button btnDelete;
         private Label label1;
-        private ComboBox comboBox1;
-        private Button button4;
+        private Button btnSearch;
         private TextBox txtName;
         private TextBox txtCat;
         private TextBox txtQuant;
@@ -259,8 +236,6 @@
         private Label label4;
         private Label label5;
         private DataGridView dtaInventory;
-        private Label lblResults;
-        private Button btnInc;
-        private Button btnDec;
+        private Button btnReset;
     }
 }

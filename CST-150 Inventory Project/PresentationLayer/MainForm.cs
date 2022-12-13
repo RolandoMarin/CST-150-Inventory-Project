@@ -1,10 +1,12 @@
 ﻿/*rolando marin-galvan
  * CST-150
- * 11/06/22
- * Milestone 2
+ * 12/11/22
+ * Milestone 4
  * This was my own work
  */
 using CST_150_Inventory_Project.BusinessLayer;
+using CST_150_Inventory_Project.Models;
+using CST_150_Inventory_Project.PresentationLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,28 +22,70 @@ namespace CST_150_Inventory_Project.Resources
 {
     public partial class MainForm : Form
     {
-        //decalre variables
-        DataTable table = new DataTable();
+       /// <summary>
+       /// Creates object of myInventory when program is run.
+       /// </summary>
+        List<InventoryManager> myInventory = new List<InventoryManager>();
         int selectedRow;
+        /// <summary>
+        /// Default Cunstructor
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// When Main Form loads We Get invenotry Items from Data Access Layer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //assigns columns
-            table.Columns.Add("Product Name", typeof(string));
-            table.Columns.Add("Catagory", typeof(string));
-            table.Columns.Add("Quantity", typeof(int));
-            table.Columns.Add("Cost", typeof(decimal));
-            dtaInventory.DataSource = table;
+        
             //loads data in grid
-            table.Rows.Add("Milk", "Dairy", 7, 6.99M);
-            table.Rows.Add("Apple", "Produce", 48, .60M);
-            table.Rows.Add("Lays", "Chips", 7, 3.49M);
-            table.Rows.Add("Chobani", "Dairy", 10, 5.69M);
+            Inventory inventory = new Inventory();
+            inventory.GetInventory(myInventory);
+            dtaInventory.DataSource = myInventory;
+            //assigns columns
+            GVInvHeader();
+
         }
+   
+        /// <summary>
+        /// Method that changes the column within the GridView
+        /// </summary>
+        private void GVInvHeader()
+        {
+            //Lets iterate through the header one column at a time.
+            //and chnage the header anmes
+            //Loop over the columns collection fromm the data grid view
+            foreach (DataGridViewColumn column in dtaInventory.Columns)
+            {
+                //Switch statement to change header text
+                //Column index starts at 0 - and count
+                switch (column.Index)
+                {
+                    case 0:
+                        column.HeaderText = "Product Name";
+                        break;
+                    case 1:
+                        column.HeaderText = "Catagory";
+                        break;
+                    case 2:
+                        column.HeaderText = "Quantity";
+                        break;
+                        case 3:
+                        column.HeaderText = "Cost";
+                        break;
+                    default:
+                        column.HeaderText = "";
+                        break;
+
+                }
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //parse the textboxes
@@ -52,10 +96,12 @@ namespace CST_150_Inventory_Project.Resources
             if (successCost && successQuanity && txtCat.Text.Length > 0 && txtName.Text.Length > 0)
             {
                 //Create overloadedobject with ourt textbox values 
-                Inventory inventory = new Inventory(txtName.Text, txtCat.Text, quanitity, cost);
+                myInventory.Add(new InventoryManager(txtName.Text, txtCat.Text, quanitity, cost));
 
-                //add in our table with our class with getters
-                table.Rows.Add(inventory.GetInventoryItem(), inventory.getCatagory(), inventory.GetQuantity(), inventory.GetCost());
+                Inventory businesslayer = new Inventory();
+
+                dtaInventory.DataSource = null;
+                dtaInventory.DataSource = myInventory;
 
             }
             else
@@ -74,31 +120,17 @@ namespace CST_150_Inventory_Project.Resources
             if (selectedRow >= 0)
             {
                 DataGridViewRow row = dtaInventory.Rows[selectedRow];
-                txtName.Text = row.Cells[0].Value.ToString();
-                txtCat.Text = row.Cells[1].Value.ToString();
-                txtQuant.Text = row.Cells[2].Value.ToString();
-                txtCost.Text = row.Cells[3].Value.ToString();
-
-                lblResults.Text = row.Cells[2].Value.ToString();
+                txtName.Text = dtaInventory.Rows[selectedRow].Cells[0].Value.ToString();
+                txtCat.Text = dtaInventory.Rows[selectedRow].Cells[1].Value.ToString();
+                txtQuant.Text = dtaInventory.Rows[selectedRow].Cells[2].Value.ToString();
+                txtCost.Text = dtaInventory.Rows[selectedRow].Cells[3].Value.ToString();
+            }
+            else
+            {
+                resetValues();
             }
 
         }
-
-
-        private void btnInc_Click(object sender, EventArgs e)
-        {
-            //increments the qty
-            int quant = int.Parse(txtQuant.Text);
-
-            Inventory inventory = new Inventory(quant);
-            inventory.SetQty(quant);
-            inventory.IncQty();
-            quant = inventory.GetQuantity();
-            lblResults.Text = String.Format("{0}", quant);
-            txtQuant.Text = quant.ToString();
-
-        }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             //when btnedit has been clicked it will update wiht a new datarow
@@ -111,22 +143,64 @@ namespace CST_150_Inventory_Project.Resources
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //deletes the row index that has been selected
-            int rowIndex = dtaInventory.CurrentCell.RowIndex;
-            dtaInventory.Rows.RemoveAt(rowIndex);
-        }
-        private void btnDec_Click(object sender, EventArgs e)
-        {
-            //decriments the quantity
-            int quant = int.Parse(txtQuant.Text);
-            Inventory inventory = new Inventory(quant);
-            inventory.SetQty(quant);
-            inventory.DecQuty();
-            quant = inventory.GetQuantity();
-            lblResults.Text = String.Format("{0}", quant);
-            txtQuant.Text = quant.ToString();
+            if (selectedRow > 0)
+            {
+                string message = "Do you want to Delete this Item?";
+                string caption = "Delete?";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, caption, buttons);
+                if (result == DialogResult.Yes)
+                {
+                    if (dtaInventory.SelectedRows.Count > 0)
+                    {
+                        // Define the current row highlighted in the Data GridView
+                        DataGridViewRow currentRow = dtaInventory.SelectedRows[0];
+
+                        // Casting
+                        string type = (string)currentRow.Cells[0].Value;
+                        // Now we need to iterate through the List
+                        Inventory businessLayer = new Inventory();
+
+                        // Inc the inventory
+                        myInventory = businessLayer.DeleteItem(myInventory, type);
+
+                        // Clear out the Data Grid View
+                        dtaInventory.DataSource = null;
+                        // Bind the new data to the DateGridView
+                        dtaInventory.DataSource = myInventory;
+
+                    }
+                }
+                else
+                {
+                    // Do something  
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Row");
+            }
+          
         }
 
-       
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            SearchForm formSecond = new SearchForm(myInventory);
+            formSecond.ShowDialog();
+         
+        }
+        private void resetValues()
+        {
+            txtCat.Text = "";
+            txtCost.Text = "";
+            txtName.Text = "";
+            txtQuant.Text = "";
+            selectedRow = 0;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            resetValues();
+        }
     }
 }

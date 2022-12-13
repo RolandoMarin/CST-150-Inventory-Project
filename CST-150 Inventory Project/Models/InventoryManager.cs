@@ -1,4 +1,10 @@
-﻿using CST_150_Inventory_Project.BusinessLayer;
+﻿/*rolando marin-galvan
+ * CST-150
+ * 12/11/22
+ * Milestone 4
+ * This was my own work
+ */
+using CST_150_Inventory_Project.BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +15,27 @@ namespace CST_150_Inventory_Project.Models
 {
     public class InventoryManager
     {
+        //Properties
         public string InventoryItem { get; set; }
-        public decimal ProductCost { get; set; }
-        public int Quantitiy { get; set; }
         public string Catagory { get; set; }
+        public int Quantitiy { get; set; }
+        public decimal ProductCost { get; set; }
 
-        public Inventory[] GetInventory(Inventory[] invArray)
+
+        /// <summary>
+        /// Overloaded Cunstructor
+        /// </summary>
+        /// <param name="_inventoryItem"></param>
+        /// <param name="_catagory"></param>
+        /// <param name="_quantity"></param>
+        /// <param name="_productCost"></param>
+        public InventoryManager(string _inventoryItem, string _catagory, int _quantity, decimal _productCost)
         {
-            invArray[0] = new Inventory("Bread", "Grain", 22, 8.99M); 
-            invArray[1] = new Inventory("Eggs", "Produce", 2, 4.39M);
-            invArray[2] = new Inventory("Milk", "Dairy", 3, 4.09M);
-            invArray[3] = new Inventory("Candy", "Sweets", 55, 2.99M);
-            invArray[4] = new Inventory(" Orange Juice", "Juice", 3, 5.99M);
-            return invArray;
+            InventoryItem = _inventoryItem;
+            ProductCost = _productCost;
+            Quantitiy = _quantity;
+            Catagory = _catagory;
         }
-
-
+  
     }
 }
